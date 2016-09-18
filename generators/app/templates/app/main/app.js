@@ -22,5 +22,5 @@ function ($stateProvider, $urlRouterProvider, $httpProvider) {
             }
         })
         ;
-    $urlRouterProvider.otherwise('/app');
+    $urlRouterProvider.otherwise('/app/start');
 }]);

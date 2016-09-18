@@ -14,7 +14,7 @@ var replace = require('gulp-replace');
 var argv = require('yargs').argv;
 var config = require('./app.json');
 
-var app = argv.app || 'env';
+var app = argv.app || 'dev';
 var clientBase = 'app';
 
 var paths = {
@@ -185,12 +185,6 @@ gulp.task('copyResources', ['clean'], function(){
 gulp.task('copyIndex', ['clean'], function(){
     return gulp.src(paths.index)
         .pipe(gulp.dest(output.index));
-});
-
-gulp.task('buildPlatform', function(){
-    return gulp.src('www/index.html')
-        .pipe(replace('<!-- injectCordova -->', '<script src="cordova.js"></script>'))
-        .pipe(gulp.dest('www'));
 });
 
 gulp.task('minJs', ['concatJs'], function(){
