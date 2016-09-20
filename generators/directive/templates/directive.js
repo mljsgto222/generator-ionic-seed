@@ -1,6 +1,6 @@
 'use strict';
 ionicApp
-.directive('<%= name %>', [function(){
+.directive('<%= name %>', [function () {
     
 }])
 ;
