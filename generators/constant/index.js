@@ -26,7 +26,7 @@ module.exports = generator.Base.extend({
                 }.bind(this));
         }
     },
-    addService: function () {
+    addConstant: function () {
         var toPath = 'app/main/constants';
         var toJs = path.join(toPath, this.constantName + '.js');
         this.fs.copyTpl(this.templatePath('constant.js'), this.destinationPath(toJs), {
