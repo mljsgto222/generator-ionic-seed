@@ -1,8 +1,8 @@
 'use strict';
+var replace = require('gulp-replace');
 
 module.exports = function (context) {
     var gulp = context.requireCordovaModule('gulp');
-    var replace = context.requireCordovaModule('gulp-replace');
     var q = context.requireCordovaModule('q');
 
     var deferred = q.defer();

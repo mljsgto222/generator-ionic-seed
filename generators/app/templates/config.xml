@@ -7,7 +7,7 @@
     <author email="<%= app.userEmail %>" href="/">
       <%= app.userName %>
     </author>
-    <hook type="before_prepare" src="scripts/beforePrepare.js" />
+    <hook type="before_prepare" src="hooks/beforePrepare.js" />
     <content src="index.html" />
     <access origin="*" />
     <preference name="webviewbounce" value="false" />
