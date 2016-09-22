@@ -24,7 +24,7 @@ module.exports = generator.Base.extend({
         prompts.push({
             type: 'confirm',
             name: 'hasTemplate',
-            message: 'Is the service need template?',
+            message: 'Do you need a template for this service?',
         });
 
         return this.prompt(prompts)
