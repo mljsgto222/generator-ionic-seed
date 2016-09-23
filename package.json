@@ -1,5 +1,5 @@
 {
-  "name": "generator-gulp-ionic",
+  "name": "generator-ionic-seed",
   "version": "0.1.0",
   "description": "a ionic generator using by yoeman, bower, sass, gulp.",
   "author": {
