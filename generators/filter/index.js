@@ -6,31 +6,31 @@ module.exports = generator.Base.extend({
     constructor: function () {
         generator.Base.apply(this, arguments);
 
-        this.argument('valueName', {
+        this.argument('filterName', {
             type: String,
             required: false
         });
     },
     prompting: function () {
         var prompts = [];
-        if(!this.valueName){
+        if(!this.filterName){
             prompts.push({
                 type: 'input',
                 name: 'name',
-                message: 'What\'s the value name?',
-                default: 'myValue'
+                message: 'What\'s the filter name?',
+                default: 'myFilter'
             });
             return this.prompt(prompts)
             .then(function(answers){
-                this.valueName = answers.name || this.valueName;
+                this.filterName = answers.name || this.filterName;
             }.bind(this));
         }  
     },
-    addValue: function () {
-        var toPath = 'app/main/value';
-        var toJs = path.join(toPath, this.valueName + '.js');
-        this.fs.copyTpl(this.templatePath('value.js'), this.destinationPath(toJs), {
-            name: this.valueName
+    addFilter: function () {
+        var toPath = 'app/main/filter';
+        var toJs = path.join(toPath, this.filterName + '.js');
+        this.fs.copyTpl(this.templatePath('filter.js'), this.destinationPath(toJs), {
+            name: this.filterName
         });
     }
 });
