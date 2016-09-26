@@ -1,6 +1,6 @@
 'use strict';
 ionicApp
-.filter('<% name %>', [function () {
+.filter('<%= name %>', [function () {
 
 }])
 ;

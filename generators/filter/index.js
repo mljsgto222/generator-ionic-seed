@@ -27,7 +27,7 @@ module.exports = generator.Base.extend({
         }  
     },
     addFilter: function () {
-        var toPath = 'app/main/filter';
+        var toPath = 'app/main/filters';
         var toJs = path.join(toPath, this.filterName + '.js');
         this.fs.copyTpl(this.templatePath('filter.js'), this.destinationPath(toJs), {
             name: this.filterName
