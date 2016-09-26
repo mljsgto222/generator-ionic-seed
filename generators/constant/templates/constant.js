@@ -1,5 +1,5 @@
 'use strict';
-ionicAPP
+ionicApp
 .constant('<%= name %>', {
 
 })
