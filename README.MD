@@ -68,7 +68,7 @@ You can also add service, value, factory, sass, constant, directive, filter by c
             "staticHost": ""
         }
     }
-* the host will auto add into request url in httpInterceptor service .
+* The host will automatically add into angular request url in httpInterceptor service .
 * You can add any new config in app.json, and build with `gulp [task] --app configName` to select config.
 
 ## Gulp Task
