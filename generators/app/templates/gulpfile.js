@@ -14,7 +14,7 @@ var replace = require('gulp-replace');
 var argv = require('yargs').argv;
 var config = require('./app.json');
 
-var app = argv.app || 'env';
+var app = argv.app || 'dev';
 var clientBase = 'app';
 
 var paths = {
@@ -187,12 +187,6 @@ gulp.task('copyIndex', ['clean'], function(){
         .pipe(gulp.dest(output.index));
 });
 
-gulp.task('buildPlatform', function(){
-    return gulp.src('www/index.html')
-        .pipe(replace('<!-- injectCordova -->', '<script src="cordova.js"></script>'))
-        .pipe(gulp.dest('www'));
-});
-
 gulp.task('minJs', ['concatJs'], function(){
     return gulp.src(output.js + '/*.js', {base: output.js})
         .pipe(clean())
@@ -208,7 +202,7 @@ gulp.task('minCss', ['concatCss'], function(){
         .pipe(gulp.dest(output.css));
 });
 
-var buildIndex = function(mode){
+var buildIndex = function(){
     var network = config[app];
     if(!network){
         throw 'the config \'' + app + '\' is undefined';
@@ -216,14 +210,14 @@ var buildIndex = function(mode){
     return gulp.src(output.index + '/index.html')
         .pipe(inject(gulp.src(output.js + '/*.js', {read: false, base: output.js}), {relative: true}))
         .pipe(inject(gulp.src(output.css + '/*.css', {read: false, base: output.css}), {relative: true}))
-        .pipe(inject(gulp.src('./config.json', {read: false}), {
+        .pipe(inject(gulp.src('./app.json', {read: false}), {
             starttag: 'window.HOST = "',
             endtag: '";',
             transform: function (filepath, file, i, length) {
                 return network.host;
             }
         }))
-        .pipe(inject(gulp.src('./config.json', {read: false}), {
+        .pipe(inject(gulp.src('./app.json', {read: false}), {
             starttag: 'window.STATIC_HOST = "',
             endtag: '";',
             transform: function (filepath, file, i, length) {
@@ -237,7 +231,7 @@ gulp.task('build', ['concatJs', 'concatCss', 'copyResources', 'copyIndex', 'copy
     return buildIndex();
 });
 
-gulp.task('min', ['minJs', 'minCss','copyResources', 'copyIndex', 'copyTemplate'], function(){
+gulp.task('release', ['minJs', 'minCss','copyResources', 'copyIndex', 'copyTemplate'], function(){
     return buildIndex();
 });
 
