@@ -1,13 +1,13 @@
 {
   "name": "generator-ionic-seed",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "a ionic generator using by yoeman, bower, sass, gulp.",
   "author": {
     "name": "mljsgto222",
     "email": "mljsgto222@gmail.com"
   },
   "files": [
-    "generators/app"
+    "generators"
   ],
   "keywords": [
     "yeoman-generator",
