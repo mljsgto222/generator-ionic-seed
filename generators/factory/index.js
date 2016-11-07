@@ -34,7 +34,7 @@ module.exports = generator.Base.extend({
             }.bind(this));
     },
     addFactory: function () {
-        var toPath = 'app/main/factorys';
+        var toPath = 'app/main/services';
         if(this.hasTemplate){
             toPath = path.join(toPath, this.factoryName);
             var toTemplate = path.join(toPath, this.factoryName + '.html');
