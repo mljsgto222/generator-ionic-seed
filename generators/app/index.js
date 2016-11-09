@@ -56,7 +56,7 @@ module.exports = generator.Base.extend({
                 }.bind(this));
         },
         cleanDirectory: function(){
-            var appPath = this.destinationPath(this.appName);
+            var appPath = this.destinationPath(this.answers.name);
             var files = glob.sync('**/*.*', {dot: true, cwd: appPath});
             if(files.length > 0){
                 var prompts = [{
