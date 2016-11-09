@@ -56,7 +56,7 @@ module.exports = generator.Base.extend({
                 }.bind(this));
         },
         cleanDirectory: function(){
-            var appPath = this.destinationPath(this.appName);
+            var appPath = this.destinationPath(this.answers.name);
             var files = glob.sync('**/*.*', {dot: true, cwd: appPath});
             if(files.length > 0){
                 var prompts = [{
@@ -75,7 +75,7 @@ module.exports = generator.Base.extend({
     },
     writing: function () {
         var files = glob.sync('**/*.*', {dot: true, cwd: this.sourceRoot()});
-        var appPath = this.appName;
+        var appPath = this.answers.name;
         var self = this;
         _.forEach(files, function(file){
             self.fs.copyTpl(self.templatePath(file), self.destinationPath(path.join(appPath, file)), {
@@ -84,7 +84,7 @@ module.exports = generator.Base.extend({
         });
     },
     install: function () {
-        var appPath = this.destinationPath(this.appName);
+        var appPath = this.destinationPath(this.answers.name);
         process.chdir(appPath);
         this.installDependencies();
     }
