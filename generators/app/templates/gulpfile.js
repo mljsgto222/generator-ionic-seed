@@ -208,7 +208,18 @@ var buildIndex = function(){
         throw 'the config \'' + app + '\' is undefined';
     }
     return gulp.src(output.index + '/index.html')
-        .pipe(inject(gulp.src(output.js + '/*.js', {read: false, base: output.js}), {relative: true}))
+        .pipe(inject(gulp.src(output.js + '/*.js', {read: false, base: output.js}), {
+            relative: true,
+            transform: function(filepath, file, i, length){
+                return '<script src="' + path.join(network.staticHost || '', filepath) + '"></script>'; 
+            }
+        }))
+        .pipe(inject(gulp.src(output.css + '/*.css', {read: false, base: output.css}), {
+            relative: true,
+            transform: function(filepath, file, i, length){
+                return '<link href="' + path.join(network.staticHost || '', filepath) + '" rel="stylesheet">'
+            }
+        }))
         .pipe(inject(gulp.src(output.css + '/*.css', {read: false, base: output.css}), {relative: true}))
         .pipe(inject(gulp.src('./app.json', {read: false}), {
             starttag: 'window.HOST = "',
