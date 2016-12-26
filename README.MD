@@ -52,6 +52,7 @@ You can also add service, value, factory, sass, constant, directive, filter by c
 +-- config.xml
 +-- gulpfile.js
 +-- package.json
++-- ionic.config.json
 ```
 
 * All source code is under app/main folder.The root template is app/index.html
