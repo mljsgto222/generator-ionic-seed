@@ -21,7 +21,8 @@
     "main-bower-files": "^2.11.1",
     "thunks": "^4.1.4",
     "xml2js": "^0.4.16",
-    "q": "^1.4.1"
+    "q": "^1.4.1",
+    "gulp-angular-templatecache": "^2.0.0"
   },
   "cordovaPlugins": [
     "cordova-plugin-device",

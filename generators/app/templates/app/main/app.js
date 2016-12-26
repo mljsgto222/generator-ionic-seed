@@ -1,5 +1,5 @@
 'use strict';
-var ionicApp = angular.module('<%= app.name %>', ['ionic', 'ui.router'])
+var ionicApp = angular.module('<%= app.name %>', ['ionic', 'ui.router', 'templates'])
 .run([function () {
 
 }])
@@ -10,14 +10,14 @@ function ($stateProvider, $urlRouterProvider, $httpProvider) {
     $stateProvider
         .state('app', {
             url: '/app',
-            templateUrl: 'templates/app.html',
+            templateUrl: 'app.html',
             abstract: true,
         })
         .state('app.start', {
             url: '/start',
             views: {
                 menuContent: {
-                    templateUrl: 'templates/start.html'
+                    templateUrl: 'start.html'
                 }
             }
         })
