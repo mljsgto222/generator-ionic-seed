@@ -13,6 +13,7 @@ var sass = require('gulp-sass');
 var replace = require('gulp-replace');
 var argv = require('yargs').argv;
 var config = require('./app.json');
+var templateCache = require('gulp-angular-templatecache');
 
 var app = argv.app || 'dev';
 var clientBase = 'app';
@@ -25,6 +26,7 @@ var paths = {
         'app/images/**/*'
     ],
     js: [
+        'app/templates/*.js',
         'app/main/app.js',
         'app/main/constants/**/*.js',
         'app/main/directives/**/*.js',
@@ -58,7 +60,7 @@ var output = {
     images: 'www/images',
     js: 'www',
     css: 'www',
-    template: 'www/templates',
+    template: 'app/templates',
     base: 'www'
 };
 
@@ -119,6 +121,10 @@ gulp.task('stylesheet', function(){
 gulp.task('templates', function(){
     return gulp.src(paths.templates)
         .pipe(rename({dirname: ''}))
+        .pipe(templateCache('templates.js', {
+            module: 'templates',
+            standalone: true
+        }))
         .pipe(gulp.dest(output.template));
 });
 
@@ -127,7 +133,7 @@ gulp.task('clean', function() {
         .pipe(clean());
 });
 
-gulp.task('concatJs', ['clean'], function(){
+gulp.task('concatJs', ['clean', 'copyTemplate'], function(){
     var files = mainBowerFiles().concat();
     var jsFiles = [];
     for(var i = 0; i < files.length; i++){
@@ -165,6 +171,10 @@ gulp.task('concatCss', ['clean', 'sass'], function(){
 gulp.task('copyTemplate', ['clean'], function(){
     return gulp.src(paths.templates)
         .pipe(rename({dirname: ''}))
+        .pipe(templateCache('templates.js', {
+            module: 'templates',
+            standalone: true
+        }))
         .pipe(gulp.dest(output.template));
 });
 
@@ -220,7 +230,6 @@ var buildIndex = function(){
                 return '<link href="' + path.join(network.staticHost || '', filepath) + '" rel="stylesheet">'
             }
         }))
-        .pipe(inject(gulp.src(output.css + '/*.css', {read: false, base: output.css}), {relative: true}))
         .pipe(inject(gulp.src('./app.json', {read: false}), {
             starttag: 'window.HOST = "',
             endtag: '";',
