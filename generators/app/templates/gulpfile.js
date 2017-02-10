@@ -230,7 +230,6 @@ var buildIndex = function(){
                 return '<link href="' + path.join(network.staticHost || '', filepath) + '" rel="stylesheet">'
             }
         }))
-        .pipe(inject(gulp.src(output.css + '/*.css', {read: false, base: output.css}), {relative: true}))
         .pipe(inject(gulp.src('./app.json', {read: false}), {
             starttag: 'window.HOST = "',
             endtag: '";',
