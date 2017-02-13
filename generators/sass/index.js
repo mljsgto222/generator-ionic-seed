@@ -27,7 +27,7 @@ module.exports = generator.Base.extend({
         }  
     },
     addSass: function () {
-        var toPath = 'app/main/sass';
+        var toPath = 'app/main/scss';
         var toJs = path.join(toPath, this.sassName + '.scss');
         this.fs.copyTpl(this.templatePath('sass.scss'), this.destinationPath(toJs), {
             name: this.sassName
