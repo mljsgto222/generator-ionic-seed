@@ -38,6 +38,8 @@ You can also add service, value, factory, sass, constant, directive, filter by c
 |       +-- views
 |           +-- app
 |               +-- app.html
+|               +-- appCtrl.js
+|               +-- app.scss
 |           +-- start
 |               +-- start.html
 |       +-- app.js
@@ -55,6 +57,7 @@ You can also add service, value, factory, sass, constant, directive, filter by c
 +-- ionic.config.json
 ```
 
+* All .html-files will be concatenated by [gulp-angular-templatecache](https://www.npmjs.com/package/gulp-angular-templatecache).
 * All source code is under app/main folder.The root template is app/index.html
 * There is a file named `app.json` at the root folder, whose content should be like
 
