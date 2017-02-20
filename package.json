@@ -1,10 +1,17 @@
 {
   "name": "generator-ionic-seed",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "a ionic generator using by yoeman, bower, sass, gulp.",
   "author": {
     "name": "mljsgto222",
     "email": "mljsgto222@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mljsgto222/generator-ionic-seed.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mljsgto222/generator-ionic-seed/issues"
   },
   "files": [
     "generators"
